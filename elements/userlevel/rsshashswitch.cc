@@ -79,6 +79,7 @@ RSSHashSwitch::process(Packet *p)
         memcpy(&tuple.v4.dst_addr, &a, 4);
         len = 4 + 4 + 2 + 2;
 
+#ifdef HAVE_IP6
     } else if  (eth->ether_type == 0xDD86) {
         IP6FlowID f(p);
         tuple.v6.sport = f.sport();
@@ -91,7 +92,11 @@ RSSHashSwitch::process(Packet *p)
     } else {
         return 0;
     }
-
+#else
+    } else {
+        return 0;
+    }
+#endif
     uint32_t orig_hash = rte_softrss((uint32_t *)&tuple, len, hash_key);
 
     return orig_hash % _max;

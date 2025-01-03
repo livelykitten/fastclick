@@ -78,7 +78,7 @@ AC_CHECK_TOOL(STRIP, strip, :)
 conf_auxdir='$(top_srcdir)'
 AC_SUBST(conf_auxdir)
 
-test -z "$AR_CREATEFLAGS" && AR_CREATEFLAGS=cru
+test -z "$AR_CREATEFLAGS" && AR_CREATEFLAGS=cruU
 AC_SUBST(AR_CREATEFLAGS)
 
 EXTRA_DRIVER_OBJS=

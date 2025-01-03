@@ -432,7 +432,7 @@ H(rte_hash,create)(const struct rte_hash_hvariant_parameters *params)
 
 
 	if (params == NULL) {
-		RTE_LOG(ERR, HASH, "rte_hash_hvariant_create has no parameters\n");
+		RTE_LOG(ERR, EAL, "rte_hash_hvariant_create has no parameters\n");
 		return NULL;
 	}
 
@@ -441,7 +441,7 @@ H(rte_hash,create)(const struct rte_hash_hvariant_parameters *params)
 			(params->entries < RTE_HASH_HVARIANT_BUCKET_ENTRIES) ||
 			!rte_is_power_of_2(RTE_HASH_HVARIANT_BUCKET_ENTRIES) ) {
 		rte_errno = EINVAL;
-		RTE_LOG(ERR, HASH, "rte_hash_hvariant_create has invalid parameters\n");
+		RTE_LOG(ERR, EAL, "rte_hash_hvariant_create has invalid parameters\n");
 		return NULL;
 	}
 
@@ -452,7 +452,7 @@ H(rte_hash,create)(const struct rte_hash_hvariant_parameters *params)
 					RTE_CACHE_LINE_SIZE, params->socket_id);
 
 	if (h == NULL) {
-		RTE_LOG(ERR, HASH, "memory allocation failed\n");
+		RTE_LOG(ERR, EAL, "memory allocation failed\n");
 		goto err;
 	}
 
@@ -463,7 +463,7 @@ H(rte_hash,create)(const struct rte_hash_hvariant_parameters *params)
 				RTE_CACHE_LINE_SIZE, params->socket_id);
 
 	if (buckets == NULL) {
-		RTE_LOG(ERR, HASH, "memory allocation failed\n");
+		RTE_LOG(ERR, EAL, "memory allocation failed\n");
 		goto err;
 	}
 
@@ -475,7 +475,7 @@ H(rte_hash,create)(const struct rte_hash_hvariant_parameters *params)
 			RTE_CACHE_LINE_SIZE, params->socket_id);
 
 	if (k == NULL) {
-		RTE_LOG(ERR, HASH, "memory allocation failed\n");
+		RTE_LOG(ERR, EAL, "memory allocation failed\n");
 		goto err;
 	}
 
@@ -483,7 +483,7 @@ H(rte_hash,create)(const struct rte_hash_hvariant_parameters *params)
 			RTE_CACHE_LINE_SIZE, params->socket_id);
 
 	if (iter_group_mask == NULL) {
-		RTE_LOG(ERR, HASH, "memory allocation failed\n");
+		RTE_LOG(ERR, EAL, "memory allocation failed\n");
 		goto err;
 	}
 
@@ -492,7 +492,7 @@ H(rte_hash,create)(const struct rte_hash_hvariant_parameters *params)
 				RTE_CACHE_LINE_SIZE, params->socket_id);
 
 		if (reset_group_mask == NULL) {
-			RTE_LOG(ERR, HASH, "memory allocation failed\n");
+			RTE_LOG(ERR, EAL, "memory allocation failed\n");
 			goto err;
 		}
 
